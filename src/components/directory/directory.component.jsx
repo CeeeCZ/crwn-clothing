@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './directory.styles.scss';
-import { MenuItem } from '../menu-item/menu-item.component';
+import { MenuItemWithRouter } from '../menu-item/menu-item.component';
 
 export const Directory = () => {
     const [sections, setSections] = useState(
@@ -9,33 +9,33 @@ export const Directory = () => {
                 title: 'hats',
                 imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
                 id: 1,
-                linkUrl: 'shop/hats'
+                linkUrl: 'hats'
             },
             {
                 title: 'jackets',
                 imageUrl: 'https://i.ibb.co/px2tCc3/jackets.png',
                 id: 2,
-                linkUrl: 'shop/jackets'
+                linkUrl: 'jackets'
             },
             {
                 title: 'sneakers',
                 imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
                 id: 3,
-                linkUrl: 'shop/sneakers'
+                linkUrl: 'sneakers'
             },
             {
-                title: 'womens',
+                title: 'women',
                 imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
                 size: 'large',
                 id: 4,
-                linkUrl: 'shop/womens'
+                linkUrl: 'women'
             },
             {
-                title: 'mens',
+                title: 'men',
                 imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
                 size: 'large',
                 id: 5,
-                linkUrl: 'shop/mens'
+                linkUrl: 'men'
             }
         ]
     );
@@ -43,8 +43,8 @@ export const Directory = () => {
     return(
         <div className="directory-menu">
             {
-                sections.map(({ title, imageUrl, id, size }) => (
-                    <MenuItem key={id} title={title} imageUrl={imageUrl} size={size}/>
+                sections.map(({ id, ...otherSectionProps }) => (
+                    <MenuItemWithRouter key={id} {...otherSectionProps}/>
                 ))
             }
         </div>
